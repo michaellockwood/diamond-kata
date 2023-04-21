@@ -15,5 +15,13 @@ if (input.Length > 1)
     return;
 }
 
-var output = Diamond.Generate(input[0]);
-Console.WriteLine(output);
+try
+{
+    var output = Diamond.Generate(input[0]);
+    Console.WriteLine(output);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+    Environment.ExitCode = 1;
+}
