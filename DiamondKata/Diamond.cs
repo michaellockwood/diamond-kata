@@ -10,19 +10,22 @@ public static class Diamond
         {
             throw new ArgumentException($"Target letter {targetLetter} is not a valid ASCII letter", nameof(targetLetter));
         }
-
-        var upperTargetLetter = char.ToUpper(targetLetter);
         
+        return GenerateOutput(char.ToUpper(targetLetter));
+    }
+
+    private static string GenerateOutput(char targetLetter)
+    {
         var outputBuilder = new StringBuilder();
         
-        for (var i = 'A'; i < upperTargetLetter; i++)
+        for (var i = 'A'; i < targetLetter; i++)
         {
-            outputBuilder.AppendLine(GenerateRow(i, upperTargetLetter));
+            outputBuilder.AppendLine(GenerateRow(i, targetLetter));
         }
 
-        for (var i = upperTargetLetter; i >= 'A'; i--)
+        for (var i = targetLetter; i >= 'A'; i--)
         {
-            outputBuilder.AppendLine(GenerateRow(i, upperTargetLetter));
+            outputBuilder.AppendLine(GenerateRow(i, targetLetter));
         }
 
         return outputBuilder.ToString();
