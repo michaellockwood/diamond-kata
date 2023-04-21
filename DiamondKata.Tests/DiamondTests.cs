@@ -7,7 +7,7 @@ public class DiamondTests
     [Fact]
     public void Generate_A_ReturnsA()
     {
-        const string expected = "A\n";
+        const string expected = "A";
         var actual = Diamond.Generate('A');
         Assert.Equal(expected, actual);
     }
@@ -18,7 +18,7 @@ public class DiamondTests
         var expectedBuilder = new StringBuilder();
         expectedBuilder.AppendLine("-A-");
         expectedBuilder.AppendLine("B-B");
-        expectedBuilder.AppendLine("-A-");
+        expectedBuilder.Append("-A-");
         var actual = Diamond.Generate('B');
         Assert.Equal(expectedBuilder.ToString(), actual);
     }
@@ -33,7 +33,7 @@ public class DiamondTests
         expectedBuilder.AppendLine("D-----D");
         expectedBuilder.AppendLine("-C---C-");
         expectedBuilder.AppendLine("--B-B--");
-        expectedBuilder.AppendLine("---A---");
+        expectedBuilder.Append("---A---");
         var actual = Diamond.Generate('D');
         Assert.Equal(expectedBuilder.ToString(), actual);
     }
@@ -69,7 +69,7 @@ public class DiamondTests
         expectedBuilder.AppendLine("-B-B-");
         expectedBuilder.AppendLine("C---C");
         expectedBuilder.AppendLine("-B-B-");
-        expectedBuilder.AppendLine("--A--");
+        expectedBuilder.Append("--A--");
         var actual = Diamond.Generate('c');
         Assert.Equal(expectedBuilder.ToString(), actual);
     }

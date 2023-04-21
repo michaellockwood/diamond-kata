@@ -16,19 +16,17 @@ public static class Diamond
 
     private static string GenerateOutput(char targetLetter)
     {
-        var outputBuilder = new StringBuilder();
-        
-        for (var i = 'A'; i < targetLetter; i++)
+        var rows = new List<string>();
+        for (var i = 'A'; i <= targetLetter; i++)
         {
-            outputBuilder.AppendLine(GenerateRow(i, targetLetter));
+            rows.Add(GenerateRow(i, targetLetter));
         }
 
-        for (var i = targetLetter; i >= 'A'; i--)
-        {
-            outputBuilder.AppendLine(GenerateRow(i, targetLetter));
-        }
+        var repeatRows = rows.GetRange(0, rows.Count - 1);
+        repeatRows.Reverse();
+        rows.AddRange(repeatRows);
 
-        return outputBuilder.ToString();
+        return string.Join(Environment.NewLine, rows);
     }
 
     private static string GenerateRow(char currentChar, char maxChar)
