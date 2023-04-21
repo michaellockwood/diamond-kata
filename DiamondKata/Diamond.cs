@@ -6,9 +6,9 @@ public static class Diamond
 {
     public static string Generate(char targetLetter)
     {
-        if (!char.IsLetter(targetLetter))
+        if (!char.IsAsciiLetter(targetLetter))
         {
-            throw new ArgumentException($"Target letter {targetLetter} is not a letter", nameof(targetLetter));
+            throw new ArgumentException($"Target letter {targetLetter} is not a valid ASCII letter", nameof(targetLetter));
         }
 
         var upperTargetLetter = char.ToUpper(targetLetter);

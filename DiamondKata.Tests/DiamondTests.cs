@@ -38,10 +38,27 @@ public class DiamondTests
         Assert.Equal(expectedBuilder.ToString(), actual);
     }
     
-    [Fact]
-    public void Generate_NonAlphaCharacter_ThrowsArgumentException()
+    [Theory]
+    [InlineData('1')]
+    [InlineData('9')]
+    [InlineData('!')]
+    [InlineData('*')]
+    [InlineData('\n')]
+    [InlineData('€')]
+    public void Generate_NonAlphaCharacter_ThrowsArgumentException(char input)
     {
-        Assert.Throws<ArgumentException>(() => Diamond.Generate('1'));
+        Assert.Throws<ArgumentException>(() => Diamond.Generate(input));
+    }
+    
+    [Theory]
+    [InlineData('Ɑ')]
+    [InlineData('Ç')]
+    [InlineData('Ĝ')]
+    [InlineData('Ⱡ')]
+    [InlineData('Œ')]
+    public void Generate_AccentedCharacter_ThrowsArgumentException(char input)
+    {
+        Assert.Throws<ArgumentException>(() => Diamond.Generate(input));
     }
     
     [Fact]
